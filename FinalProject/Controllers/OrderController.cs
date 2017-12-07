@@ -15,7 +15,7 @@ namespace FinalProject.Controllers
         {
             using (NMJFoodsEntities db = new NMJFoodsEntities())
             {
-                return View(db.Orders.ToList());
+                return View(db.Orders.OrderByDescending(o => o.OrderDate).ToList());
             }
         }
     }
