@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="NMJFoods-Web.config Connection String" description="NMJFoods Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.NMJFoods.csdl|res://*/Models.NMJFoods.ssdl|res://*/Models.NMJFoods.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=wctc-jrp.database.windows.net;initial catalog=wctc-mvc;persist security info=True;user id=jprudlow;password=$uT6emacreYAkEga;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\light\\Documents\\Projects\\\.NET\ Web\ Development\\Git\ Repo\\FinalProject\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NMJFoods']/@connectionString" />
+  </parameter>
+  <parameter name="NMJFoodsEntities-Web.config Connection String" description="NMJFoodsEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.NMJFoods.csdl|res://*/Models.NMJFoods.ssdl|res://*/Models.NMJFoods.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=wctc-jrp.database.windows.net;initial catalog=wctc-mvc;persist security info=True;user id=jprudlow;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\light\\Documents\\Projects\\\.NET\ Web\ Development\\Git\ Repo\\FinalProject\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NMJFoodsEntities']/@connectionString" />
+  </parameter>
+</parameters>
