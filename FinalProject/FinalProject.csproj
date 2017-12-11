@@ -172,6 +172,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>NMJFoods.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeSignIn.cs" />
     <Compile Include="Models\NMJFoods.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -209,6 +210,7 @@
       <DependentUpon>NMJFoods.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\UserAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using FinalProject.Models;
+using FinalProject.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace FinalProject.Controllers
 {
@@ -10,7 +13,58 @@ namespace FinalProject.Controllers
     {
         public ActionResult Index()
         {
+            using (var db = new NMJFoodsEntities())
+            {
+                ViewBag.CustomerID = new SelectList(db.Customers.OrderBy(c => c.CompanyName), "CustomerID", "CompanyName").ToList();
+            }
             return View();
+        }
+
+        // POST: Employee/SignIn
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(EmployeeSignIn employeeSignIn, string ReturnUrl)
+        {
+            using (NMJFoodsEntities db = new NMJFoodsEntities())
+            {
+                if (ModelState.IsValid)
+                {
+                    // find employee by EmployeeId
+                    Employee employee = db.Employees.Find(employeeSignIn.EmployeeId);
+                    // hash & salt the posted password
+                    string hash = UserAccount.HashSHA1(employeeSignIn.Password + employee.UserGuid);
+                    // Compared posted Password to employee password
+                    if (hash == employee.Password)
+                    {
+                        // Passwords match
+                        // authenticate user (this stores the EmployeeID in an encrypted cookie)
+                        // normally, you would require HTTPS
+                        FormsAuthentication.SetAuthCookie(employee.EmployeeID.ToString(), false);
+
+                        // if there is a return url, redirect to the url
+                        //if (ReturnUrl != null)
+                        //{
+                        //    return Redirect(ReturnUrl);
+                        //}
+
+                        HttpCookie myCookie = new HttpCookie("role");
+                        myCookie.Value = "employee";
+                        Response.Cookies.Add(myCookie);
+
+                        // Redirect to Home page
+                        return RedirectToAction(actionName: "Index", controllerName: "Home");
+                    }
+                    else
+                    {
+                        // Passwords do not match
+                        ModelState.AddModelError("Password", "Incorrect Password");
+                    }
+
+                }
+                // create drop-down list box for company name
+                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(c => c.LastName), "EmployeeID", "LastName").ToList();
+                return View();
+            }
         }
 
         public ActionResult About()
