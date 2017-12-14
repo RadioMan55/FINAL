@@ -190,6 +190,7 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>NMJFoods.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderDTOs.cs" />
     <Compile Include="Models\Order_Detail.cs">
       <DependentUpon>NMJFoods.tt</DependentUpon>
     </Compile>

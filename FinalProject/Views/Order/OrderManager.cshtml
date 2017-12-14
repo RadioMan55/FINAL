@@ -5,6 +5,11 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<div class="container" style="display:inline-block;">
+    <input type="text" class="form-control" id="orderId" placeholder="order number">
+</div>
+<button type="submit" id="filter" class="btn">Filter</button>
+
 
 <table class="table table-hover table-responsive">
     <thead>
@@ -22,11 +27,11 @@
         {
             <tr class="order-row" id="@o.OrderID">
                 <td>@o.OrderID</td>
-                <td>@o.OrderDate</td>
-                <td>@o.RequiredDate</td>
-                <td>@o.ShippedDate</td>
-                <td>@o.CustomerID</td>
-                <td>@o.EmployeeID</td>
+                <td class="@o.OrderDate">@o.OrderDate</td>
+                <td class="@o.RequiredDate">@o.RequiredDate</td>
+                <td class="@o.ShippedDate">@o.ShippedDate</td>
+                <td class="@o.CustomerID">@o.CustomerID</td>
+                <td class="@o.EmployeeID">@o.EmployeeID</td>
             </tr>
         }
     </tbody>
@@ -71,10 +76,40 @@
                 // display modal
                 $('#myModal').modal();
             });
- });
 
-function showModelCount(modelCount) {
-    $('#modelCountDisplay').html(modelCount + " products");
-}
+            $('#filter').click(function () {
+                var orderId = $('#orderId').val();
+                var URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId;
+                $.getJSON(URL)
+                    .always(function (data, textStatus, statusObject) {
+                        if (statusObject.status == 200) {
+                            // 200 OK
+                            $('#orders').html('');
+                            for (i = 0; i < data.length; i++) {
+                                //console.log(data[i].ProductName);
+                                var str = "<tr class='order-row' id='" + data[i].OrderID + "'>";
+                                str += "<td>" + data[i].OrderID + "</td>";
+                                str += "<td>" + data[i].OrderDate + "</td>";
+                                str += "<td>" + data[i].RequiredDate + "</td>";
+                                str += "<td>" + data[i].ShippedDate + "</td>";
+                                str += "<td>" + data[i].CustomerID + "</td>";
+                                str += "<td>" + data[i].EmployeeID + "</td>";
+                                str += "</tr>";
+                                $('#orders').append(str);
+                            }
+                            showModelCount(data.length);
+                        } else {
+                            // Error
+                            console.log("Http response code: " + data.status);
+                            console.log("Http response: " + data.statusText);
+                        }
+                    });
+            });
+
+        });
+
+        function showModelCount(modelCount) {
+            $('#modelCountDisplay').html(modelCount + " products");
+        }
     </script>
 }
