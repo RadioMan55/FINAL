@@ -75,6 +75,7 @@
           <Property Name="ReportsTo" Type="int" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="UserGuid" Type="uniqueidentifier" />
+          <Property Name="Username" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="EmployeeTerritories">
           <Key>
@@ -491,6 +492,7 @@
           <NavigationProperty Name="Territories" Relationship="Self.EmployeeTerritories" FromRole="Employees" ToRole="Territories" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserGuid" Type="Guid" />
+          <Property Name="Username" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -868,6 +870,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="NMJFoodsModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />

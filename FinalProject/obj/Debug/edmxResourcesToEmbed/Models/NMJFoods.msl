@@ -57,6 +57,9 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="NMJFoodsModel.Employee">
         <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />

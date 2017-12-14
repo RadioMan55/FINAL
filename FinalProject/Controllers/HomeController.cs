@@ -15,7 +15,7 @@ namespace FinalProject.Controllers
         {
             using (var db = new NMJFoodsEntities())
             {
-                ViewBag.CustomerID = new SelectList(db.Customers.OrderBy(c => c.CompanyName), "CustomerID", "CompanyName").ToList();
+                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(c => c.Username), "EmployeeID", "Username").ToList();
             }
             return View();
         }
@@ -52,7 +52,7 @@ namespace FinalProject.Controllers
                         Response.Cookies.Add(myCookie);
 
                         // Redirect to Home page
-                        return RedirectToAction(actionName: "Index", controllerName: "Home");
+                        return RedirectToAction(actionName: "OrderManager", controllerName: "Order");
                     }
                     else
                     {
@@ -62,7 +62,7 @@ namespace FinalProject.Controllers
 
                 }
                 // create drop-down list box for company name
-                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(c => c.LastName), "EmployeeID", "LastName").ToList();
+                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(c => c.Username), "EmployeeID", "Username").ToList();
                 return View();
             }
         }

@@ -68,6 +68,9 @@
     <Property Name="HomePhone" Type="nvarchar" MaxLength="24" />
     <Property Name="Extension" Type="nvarchar" MaxLength="4" />
     <Property Name="ReportsTo" Type="int" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserGuid" Type="uniqueidentifier" />
+    <Property Name="Username" Type="nvarchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="EmployeeTerritories">
     <Key>

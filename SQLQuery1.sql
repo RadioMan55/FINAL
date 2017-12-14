@@ -1,0 +1,1 @@
+﻿ALTER TABLE Employees ADD [Username] [nvarchar](15)
