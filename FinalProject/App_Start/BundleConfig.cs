@@ -11,8 +11,19 @@ namespace FinalProject
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                "~/Scripts/jquery-ui.min.js",
+                "~/Scripts/jquery-ui.structure.min.js",
+                "~/Scripts/jquery-ui.theme.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jbox").Include(
+                        "~/Scripts/jBox.min.js*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+                        "~/Scripts/script.js*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
@@ -25,6 +36,9 @@ namespace FinalProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/jquery-ui.min.css",
+                      "~/Content/jquery-ui.structure.css",
+                      "~/Content/jquery-ui.theme.min.css",
                       "~/Content/site.css"));
         }
     }
