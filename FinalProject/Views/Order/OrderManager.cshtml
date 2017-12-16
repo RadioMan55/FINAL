@@ -5,37 +5,53 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<div class="container" style="display:inline-block;">
-    <input type="text" class="form-control" id="orderId" placeholder="order number">
+
+<div class="container">
+    <h4>Filter data set using AJAX</h4>
+    <div class="container" style="display:inline-block;">
+        <input type="text" class="form-control" id="orderId" placeholder="Order Number">
+    </div>
+    <div class="container" style="display:inline-block;">
+        <input type="text" class="form-control" id="customerId" placeholder="Customer ID">
+    </div>
+    <div class="container" style="display:inline-block;">
+        <input type="text" class="form-control" id="employeeId" placeholder="Employee ID">
+    </div>
+    <button type="submit" id="filter" class="btn">Filter</button>
 </div>
-<button type="submit" id="filter" class="btn">Filter</button>
+<br />
+<br />
 
-
-<table class="table table-hover table-responsive">
-    <thead>
-        <tr class="font-md">
-            <th>Order Number</th>
-            <th>Order Date</th>
-            <th>Required Date</th>
-            <th>Shipped Date</th>
-            <th>Customer ID</th>
-            <th>Sales Rep ID</th>
-        </tr>
-    </thead>
-    <tbody id="orders">
-        @foreach (Order o in Model)
-        {
-            <tr class="order-row" id="@o.OrderID">
-                <td>@o.OrderID</td>
-                <td class="@o.OrderDate">@o.OrderDate</td>
-                <td class="@o.RequiredDate">@o.RequiredDate</td>
-                <td class="@o.ShippedDate">@o.ShippedDate</td>
-                <td class="@o.CustomerID">@o.CustomerID</td>
-                <td class="@o.EmployeeID">@o.EmployeeID</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="container">
+        <h4>Filter data results in the table view with the Data Tables plugin</h4>
+        <div class="row">
+            <table class="table table-hover table-responsive" id="myTable">
+                <thead>
+                    <tr class="font-md">
+                        <th>Order Number</th>
+                        <th>Order Date</th>
+                        <th>Required Date</th>
+                        <th>Shipped Date</th>
+                        <th>Customer ID</th>
+                        <th>Sales Rep ID</th>
+                    </tr>
+                </thead>
+                <tbody id="orders">
+                    @foreach (Order o in Model)
+                    {
+                        <tr class="order-row" id="@o.OrderID">
+                            <td>@o.OrderID</td>
+                            <td class="@o.OrderDate">@o.OrderDate</td>
+                            <td class="@o.RequiredDate">@o.RequiredDate</td>
+                            <td class="@o.ShippedDate">@o.ShippedDate</td>
+                            <td class="@o.CustomerID">@o.CustomerID</td>
+                            <td class="@o.EmployeeID">@o.EmployeeID</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>
 
 <!-- Modal window -->
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
@@ -79,7 +95,37 @@
 
             $('#filter').click(function () {
                 var orderId = $('#orderId').val();
-                var URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId;
+                var employeeId = $('#employeeId').val();
+                var customerId = $('#customerId').val();
+                var URL = "";
+                if (orderId && !employeeId && !customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId;
+                }
+                else if (orderId && employeeId && !customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId + "&EmployeeId=" + employeeId;
+                }
+                else if (orderId && employeeId && customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId + "&EmployeeId=" + employeeId + "&CustomerId=" + customerId;
+                }
+                else if (!orderId && employeeId && !customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?EmployeeId=" + employeeId;
+                }
+                else if (!orderId && employeeId && customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?EmployeeId=" + employeeId + "&CustomerId=" + customerId;
+                }
+                else if (!orderId && !employeeId && customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?CustomerId=" + customerId;
+                }
+                else if (orderId && !employeeId && customerId) {
+                    URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId+ "&CustomerId=" + customerId;
+                }
+                else {
+                    URL = "@Url.Content("~")Order/FilterOrders";
+                }
+
+
+
+                //var URL = "@Url.Content("~")Order/FilterOrders?IdFilter=" + orderId;
                 $.getJSON(URL)
                     .always(function (data, textStatus, statusObject) {
                         if (statusObject.status == 200) {
@@ -106,10 +152,16 @@
                     });
             });
 
+            $('#myTable').DataTable();
+
         });
 
         function showModelCount(modelCount) {
             $('#modelCountDisplay').html(modelCount + " products");
         }
     </script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
 }

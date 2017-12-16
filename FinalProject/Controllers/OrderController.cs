@@ -15,31 +15,56 @@ namespace FinalProject.Controllers
         {
             using (NMJFoodsEntities db = new NMJFoodsEntities())
             {
-                return View(db.Orders.OrderByDescending(o => o.OrderDate).ToList());
+                return View(db.Orders.OrderByDescending(o => o.OrderID).ToList());
             }
         }
         // GET: Product/FilterProducts
-        public JsonResult FilterOrders(int? IdFilter,int? EmployeeId)
+        public JsonResult FilterOrders(int? IdFilter,int? EmployeeID, int? CustomerID)
         {
             using (NMJFoodsEntities db = new NMJFoodsEntities())
             {
-                if (IdFilter == null)
-                {
-                    Response.StatusCode = 400;
-                    return Json(new { }, JsonRequestBehavior.AllowGet);
-                }
                 var Orders = db.Orders.ToList();
-                if (IdFilter != null)
+
+                if (IdFilter == null && EmployeeID == null && CustomerID == null)
+                {
+                    //keep all orders in Orders
+                    Orders = db.Orders.ToList();
+                }
+                
+                if (IdFilter != null && EmployeeID == null && CustomerID == null)
                 {
                     Orders = Orders.Where(o => o.OrderID == IdFilter).ToList();
                 }
-                else
+                else if (IdFilter != null && EmployeeID != null && CustomerID == null)
                 {
-                    if (EmployeeId != null)
-                    {
-                        Orders = Orders.Where(o => o.EmployeeID == EmployeeId).ToList();
-                    }
+                    Orders = Orders.Where(o => o.OrderID == IdFilter).ToList();
+                    Orders = Orders.Where(o => o.EmployeeID == EmployeeID).ToList();
                 }
+                else if (IdFilter != null && EmployeeID != null && CustomerID != null)
+                {
+                    Orders = Orders.Where(o => o.OrderID == IdFilter).ToList();
+                    Orders = Orders.Where(o => o.EmployeeID == EmployeeID).ToList();
+                    Orders = Orders.Where(o => o.CustomerID == CustomerID).ToList();
+                }
+                else if (IdFilter == null && EmployeeID != null && CustomerID == null)
+                {
+                    Orders = Orders.Where(o => o.EmployeeID == EmployeeID).ToList();
+                }
+                else if (IdFilter == null && EmployeeID != null && CustomerID != null)
+                {
+                    Orders = Orders.Where(o => o.EmployeeID == EmployeeID).ToList();
+                    Orders = Orders.Where(o => o.CustomerID == CustomerID).ToList();
+                }
+                else if (IdFilter != null && EmployeeID == null && CustomerID != null)
+                {
+                    Orders = Orders.Where(o => o.OrderID == IdFilter).ToList();
+                    Orders = Orders.Where(o => o.CustomerID == CustomerID).ToList();
+                }
+                else if (IdFilter == null && EmployeeID == null && CustomerID != null)
+                {
+                    Orders = Orders.Where(o => o.CustomerID == CustomerID).ToList();
+                }
+
                 var OrderDTOs = (from o in Orders
                                  orderby o.OrderID
                                  select new OrderDTOs
@@ -50,7 +75,7 @@ namespace FinalProject.Controllers
                                      ShippedDate = o.ShippedDate.ToString(),
                                      CustomerID = o.CustomerID,
                                      EmployeeID = o.EmployeeID
-                                 }).ToList();
+                                 }).OrderByDescending(o => o.OrderID).ToList();
                 return Json(OrderDTOs, JsonRequestBehavior.AllowGet);
             }
         }
