@@ -41,11 +41,11 @@
                     {
                         <tr class="order-row" id="@o.OrderID">
                             <td>@o.OrderID</td>
-                            <td class="@o.OrderDate">@o.OrderDate</td>
-                            <td class="@o.RequiredDate">@o.RequiredDate</td>
-                            <td class="@o.ShippedDate">@o.ShippedDate</td>
-                            <td class="@o.CustomerID">@o.CustomerID</td>
-                            <td class="@o.EmployeeID">@o.EmployeeID</td>
+                            <td>@o.OrderDate</td>
+                            <td>@o.RequiredDate</td>
+                            <td>@o.ShippedDate</td>
+                            <td>@o.CustomerID</td>
+                            <td>@o.EmployeeID</td>
                         </tr>
                     }
                 </tbody>
@@ -152,7 +152,25 @@
                     });
             });
 
-            $('#myTable').DataTable();
+            //$('#myTable').DataTable();
+            $('#myTable').dataTable({
+                "createdRow": function (row, data, dataIndex) {
+                    var reqDate = Date.parse(data[2]);
+                    var tempDate = Date.parse("5/13/2016 12:00:00 AM");
+
+                    if (data[3] == "") {
+                        if (reqDate > tempDate) {
+                            $(row).css("background-color", "green");
+                        }
+                        if (reqDate == tempDate) {
+                            $(row).css("background-color", "yellow");
+                        }
+                        if (reqDate < tempDate) {
+                            $(row).css("background-color", "red");
+                        }
+                    }
+                }
+            });
 
         });
 
