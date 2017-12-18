@@ -54,6 +54,7 @@
 </div>
 
 <!-- Modal window -->
+<!-- Modal window -->
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -61,17 +62,24 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Add to Cart?</h4>
+                <h4 class="modal-title">OrderDetails</h4>
             </div>
             <div class="modal-body">
-                Modal Body
+                <h4>Ship to:</h4>
+                <p id="shipTo"></p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="font-md">
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalContent"></tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    Cancel
-                </button>
-                <button type="button" class="btn btn-primary" id="AddToCart">
-                    Continue
+                    Close
                 </button>
             </div>
         </div><!-- /.modal-content -->
@@ -88,9 +96,37 @@
             //setTimeout(function () { $('.alert').fadeOut(); }, 3000);
             showModelCount(@Model.Count());
 
-            $('#orders').on('click', '.order-row', function () {
+            $('.order-row').click(function () {
                 // display modal
-                $('#myModal').modal();
+                orderId = $(this).attr('id');
+                var URL = "@Url.Content("~")Order/getOrderData/" + orderId;
+                $.getJSON(URL)
+                    .always(function (data, textStatus, statusObject) {
+                        if (statusObject.status == 200) {
+                            $('#modalContent').html('');
+                            for (i = 0; i < data.length; i++) {
+                                //console.log(data[i].ProductName);
+                                var str = "<tr id='" + data[i].orderId + "'>";
+                                str += "<td>" + data[i].ProductID + "</td>";
+                                str += "<td>" + data[i].ProductName + "</td>";
+                                str += "</tr>";
+                                $('#modalContent').append(str);
+
+                            }
+                            $('#shipTo').html('');
+                            var str = "<p>" + data[0].ShipName + "</p>";
+                            str += "<p>" + data[0].ShipAddress + "</p>";
+                            str += "<p>" + data[0].ShipCity + ", " + data[0].ShipRegion + " " + data[0].ShipPostalCode + "</p>";
+                            str += "<p>" + data[0].ShipCountry + "</p>";
+                            $('#shipTo').append(str);
+
+                        } else {
+                            console.log("Http response code: " + data.status);
+                            console.log("Http response: " + data.statusText);
+                        }
+                        $('#myModal').modal();
+                    });
+
             });
 
             $('#filter').click(function () {

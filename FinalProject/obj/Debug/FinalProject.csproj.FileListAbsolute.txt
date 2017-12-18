@@ -190,6 +190,12 @@ C:\Users\light\Documents\Projects\.NET Web Development\FINAL BACKUP\Git Repo\Fin
 C:\Users\light\Documents\Projects\.NET Web Development\FINAL BACKUP\Git Repo\FinalProject\obj\Debug\FinalProject.csproj.CoreCompileInputs.cache
 C:\Users\light\Documents\Projects\.NET Web Development\FINAL BACKUP\Git Repo\FinalProject\obj\Debug\FinalProject.dll
 C:\Users\light\Documents\Projects\.NET Web Development\FINAL BACKUP\Git Repo\FinalProject\obj\Debug\FinalProject.pdb
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.IO.Compression.dll
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\VBCSCompiler.exe
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\ApplicationInsights.config
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\csc.exe
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\csc.exe.config
@@ -198,13 +204,9 @@ C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\csi.exe
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\csi.exe.config
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\csi.rsp
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -214,7 +216,6 @@ C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.Console.d
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.IO.Compression.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.IO.FileSystem.Primitives.dll
@@ -237,11 +238,7 @@ C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\System.Xml.XPath
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\vbc.exe
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\vbc.exe.config
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\vbc.rsp
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\VBCSCompiler.exe
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\FinalProject.dll.config
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\FinalProject.dll
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\FinalProject.pdb
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\Antlr3.Runtime.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\AutoMapper.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\EntityFramework.dll
@@ -282,7 +279,10 @@ C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\Microsoft.AI.Dependency
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\Microsoft.AI.Web.xml
-C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\obj\Debug\FinalProject.csprojResolveAssemblyReference.cache
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\obj\Debug\FinalProject.csproj.CoreCompileInputs.cache
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\obj\Debug\FinalProject.dll
 C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\obj\Debug\FinalProject.pdb
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\FinalProject.dll.config
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\FinalProject.dll
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\bin\FinalProject.pdb
+C:\Users\mjmersenski\Source\Repos\FINAL\FinalProject\obj\Debug\FinalProject.csprojResolveAssemblyReference.cache

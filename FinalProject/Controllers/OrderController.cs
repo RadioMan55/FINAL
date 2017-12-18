@@ -79,5 +79,32 @@ namespace FinalProject.Controllers
                 return Json(OrderDTOs, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public JsonResult getOrderData(int id)
+        {
+            using (NMJFoodsEntities db = new NMJFoodsEntities())
+            {
+                var OrderDetails = db.Order_Details.ToList();
+                var Products = db.Products.ToList();
+                var Orders = db.Orders.ToList();
+                var OrderDTOs = (from o in OrderDetails.Where(o => o.OrderID == id)
+                                 join p in Products on o.ProductID equals p.ProductID
+                                 join order in Orders on o.OrderID equals order.OrderID
+                                 orderby o.ProductID
+                                 select new
+                                 {
+                                     p.ProductName,
+                                     o.OrderID,
+                                     o.ProductID,
+                                     order.ShipName,
+                                     order.ShipAddress,
+                                     order.ShipCity,
+                                     order.ShipRegion,
+                                     order.ShipPostalCode,
+                                     order.ShipCountry
+                                 }).ToList();
+                return Json(OrderDTOs, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
