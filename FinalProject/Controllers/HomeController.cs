@@ -15,7 +15,7 @@ namespace FinalProject.Controllers
         {
             using (var db = new NMJFoodsEntities())
             {
-                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(c => c.Username), "EmployeeID", "Username").ToList();
+                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(e => e.Username), "Username", "EmployeeID").ToList();
             }
             return View();
         }
@@ -31,6 +31,7 @@ namespace FinalProject.Controllers
                 {
                     // find employee by EmployeeId
                     Employee employee = db.Employees.Find(employeeSignIn.EmployeeId);
+                    
                     // hash & salt the posted password
                     string hash = UserAccount.HashSHA1(employeeSignIn.Password + employee.UserGuid);
                     // Compared posted Password to employee password
@@ -61,8 +62,10 @@ namespace FinalProject.Controllers
                     }
 
                 }
+
+
                 // create drop-down list box for company name
-                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(c => c.Username), "EmployeeID", "Username").ToList();
+                ViewBag.EmployeeID = new SelectList(db.Employees.OrderBy(e => e.Username), "EmployeeID", "Username").ToList();
                 return View();
             }
         }
